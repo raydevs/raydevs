@@ -1,0 +1,25 @@
+<mat-card style="margin: 5px; padding: 3px;">
+  <div class="editor-tools-bar">
+    <div>
+      <mat-button-toggle-group aria-label="Font Style" (change)="onCodificationChange($event)"
+        name="codificationSelection" [value]="defaultStrategy">
+        <mat-button-toggle matTooltip="Convert to ebcdic" value="ebcdicCodification">Ebcdic</mat-button-toggle>
+        <mat-button-toggle matTooltip="Convert to ASCII" value="ansiCodification">Ansi</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <section fxLayout="row" class="editorControls">
+      <app-search></app-search>
+      <button mat-mini-fab color="basic" aria-label="Clear editor">
+        <mat-icon (click)="clearEditor()" matTooltip="Clear editor" class="mat_icon">clear_all</mat-icon>
+      </button>
+    </section>
+    <div>
+      <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="onPageFired($event)" [hidePageSize]="true">
+      </mat-paginator>
+    </div>
+  </div>
+  <div id="ebcdicEditor" style="height: 55vh;margin-bottom: 10px;"></div>
+  <mat-divider></mat-divider>
+  <div id="hexEditor" style="height: 23vh; margin-top: 20px;"></div>
+</mat-card>

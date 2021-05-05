@@ -1,0 +1,20 @@
+<section *ngIf="!file; else fileName">
+    <input type="file" style="display: none" #fileInput (change)="onChangeFileInput()" />
+    <button *ngIf="!file" mat-mini-fab color="primary" class="file-select-button" (click)="onClickFileInputButton()"
+        matTooltip="Selecciona un fichero">
+        <mat-icon>folder_open</mat-icon>
+    </button>
+</section>
+<ng-template #fileName>
+    <section fxLayout="row" fxLayoutAlign="center center">
+        <div>
+            <span class="file-title">{{ file?.name }}</span>
+            <span class="file-subtitle">{{ fileSize }}</span>
+        </div>
+        <div>
+            <button mat-icon-button (click)="onClearFile()" matTooltip="Descartar">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </section>
+</ng-template>
